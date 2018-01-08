@@ -8,7 +8,9 @@ class Landing extends Component {
 
   render(){
     return (
-      <h1>LandingBooyah</h1>
+      <div>
+        <button>LandingButton</button>
+      </div>
     )
   }
 }

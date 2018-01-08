@@ -18,8 +18,8 @@ class App extends Component {
     return (
       <div className='App'>
         <Landing />
-        <Add />
-        <Edit />
+        {/* <Route path='/add' />
+        <Route path='/edit' /> */}
       </div>
     );
   }
