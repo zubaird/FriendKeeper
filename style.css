@@ -1,0 +1,37 @@
+/* Clone the look and feel of "chrome://" pages. */
+body {
+  margin: 10px;
+  font: 84% Arial, sans-serif
+}
+
+button {
+  font-size: 16px;
+  background-color: black;
+  border: none;
+  padding: none;
+  color: lightgray;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:focus {
+  outline:0;
+}
+
+
+h1 { font-size: 156% }
+h1 img {
+  margin: 1px 5px 0 1px;
+  vertical-align: middle
+}
+h2 {
+  border-top: 1px solid #9cc2ef;
+  background-color: #ebeff9;
+  padding: 3px 5px;
+  font-size: 100%
+}
