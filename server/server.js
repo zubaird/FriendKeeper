@@ -21,7 +21,7 @@ const friends = require( './routes/friends' );
 
 
 
-app.use(friends);
+app.use('/',friends);
 
 
 app.listen( PORT, ()=> {
