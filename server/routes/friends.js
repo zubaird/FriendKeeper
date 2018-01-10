@@ -15,6 +15,22 @@ router.get('/:id', (req, res, next) => {
     .catch(err => next(err))
 })
 
+router.post('/', (req, res, next) => {
+  knex('friends')
+    .insert(req.body)
+    .returning('*')
+    .then(friends => res.json(friends))
+    .catch(err => next(err))
+})
+
+router.delete('/:id', (req, res, next) => {
+  knex('friends')
+    .del()
+    .where({id: req.params.id})
+    .then(() => res.end())
+    .catch(err => next(err))
+})
+
 
 
 
