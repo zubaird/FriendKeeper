@@ -1,0 +1,28 @@
+{
+  "name": "friendkeeper",
+  "version": "1.0.0",
+  "description": "A Chrome Extension that helps users track and maintain their friendships",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DTThor/FriendKeeper.git"
+  },
+  "author": "Dylan Thorwaldson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DTThor/FriendKeeper/issues"
+  },
+  "homepage": "https://github.com/DTThor/FriendKeeper#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "chai": "^4.1.2",
+    "express": "^4.16.2",
+    "knex": "^0.14.2",
+    "mocha": "^4.1.0",
+    "morgan": "^1.9.0",
+    "pg": "^7.4.1"
+  }
+}
