@@ -5,7 +5,14 @@ const knex = require('../db/knex');
 router.get('/', (req, res, next) => {
   knex('friends').returning('*')
   .then(friends => res.json(friends))
+})
 
+router.get('/:id', (req, res, next) => {
+  knex('friends')
+    .where({id: req.params.id})
+    .first()
+    .then(friend => res.json(friend))
+    .catch(err => next(err))
 })
 
 
