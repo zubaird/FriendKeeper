@@ -3,7 +3,9 @@ const router = express.Router();
 const knex = require('../db/knex');
 
 router.get('/', (req, res, next) => {
-  res.send('Booyah Friends');
+  knex('friends').returning('*')
+  .then(friends => res.json(friends))
+
 })
 
 
