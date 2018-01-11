@@ -4,5 +4,5 @@ document.addEventListener('DOMContentLoaded', function() {
 })
 
 function goToLanding() {
- chrome.tabs.create({active: true, url: "landing.html"});
+ chrome.tabs.create({active: true, url: "localhost:8000"});
 }
