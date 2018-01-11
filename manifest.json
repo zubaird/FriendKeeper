@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "FriendKeeper Notification Demo",
-  "description": "This extension is my first attempt to do desktop notifications",
+  "description": "FriendKeeper desktop notifications",
   "version": "1.0",
 
   "browser_action": {
@@ -15,7 +15,8 @@
   "permissions": [
     "activeTab",
     "storage",
-    "notifications"
+    "notifications",
+    "http://localhost/*"
   ],
   "options_page": "options.html",
   "background": {

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <title>FriendKeeper</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  </head>
+  <body>
+    <h1>FriendKeeper</h1>
+    <app></app>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.js"></script>
+    <script>
+    angular.module('app', [])
+    .component('app', {
+      templateUrl: '/js/app/app.template.html',
+      controller: appController
+    })
+
+      appController.$inject = ['$http']
+      function appController($http){
+        const vm = this
+
+        vm.$onInit = function(){
+          $http.get('/friends').then(function(res){
+            vm.serverResponse = res.data
+            console.log(vm.serverResponse);
+            vm.friendsList = res.data.map(el=>{
+              return el.name
+            })
+          })
+        }
+
+        vm.addFriend = function addFriend(){
+
+          vm.friendsList.push(vm.friend.name)
+          console.log(vm.friendsList);
+          delete vm.friend
+
+        }
+
+        vm.deleteUser = function (e, friend) {
+          e.preventDefault()
+          vm.serverResponse.splice(vm.serverResponse.indexOf(friend), 1)
+          console.log(vm.serverResponse);
+        }
+      }
+    </script>
+  </body>
+</html>

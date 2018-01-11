@@ -1,0 +1,26 @@
+<div>{{ $ctrl.friendsList }}</div>
+
+
+<form ng-submit="$ctrl.addFriend()">
+  <input type="text" ng-model="$ctrl.friend.name" placeholder="Friend's name" />
+  <input type="text" ng-model="$ctrl.friend.phone_number" placeholder="phone number" />
+  <input type="text" ng-model="$ctrl.friend.email" placeholder="email" />
+  <input type="text" ng-model="$ctrl.friend.birthday" placeholder="birthday" />
+  <input type="text" ng-model="$ctrl.friend.anniversary" placeholder="anniversary" />
+  <input type="text" ng-model="$ctrl.friend.email_duration" placeholder="email frequency" />
+  <input type="text" ng-model="$ctrl.friend.phone_duration" placeholder="phone call frequency" />
+  <input type="text" ng-model="$ctrl.friend.text_duration" placeholder="text frequency" />
+  <input type="submit">
+</form>
+
+<div ng-repeat="friend in $ctrl.serverResponse">
+  <a href="#" ng-click="$ctrl.deleteUser($event, friend)">❌</a>
+  <strong>Name: {{ friend.name }}</strong>
+  Phone Number: {{ friend.phone_number }}
+  Email: {{ friend.email }}
+  Birthday: {{ friend.birthday }}
+  Anniversary: {{ friend.anniversary }}
+  Email Frequency: {{ friend.email_duration }}
+  Phone Call Frequency: {{ friend.phone_duration }}
+  Text Frequency:  {{ friend.text_duration }}
+</div>
