@@ -7,7 +7,10 @@
 
   "browser_action": {
     "default_popup": "popup.html",
-    "default_title": "FriendKeeper"
+    "default_title": "FriendKeeper",
+    "default_icon": {
+      "16": "/public/favicon-16x16.png"
+    }
   },
   "permissions": [
     "activeTab",
