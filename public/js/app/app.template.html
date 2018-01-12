@@ -14,13 +14,6 @@
 </form>
 
 <div ng-repeat="friend in $ctrl.serverResponse">
+  <strong>{{ friend.name }}</strong>
   <a href="#" ng-click="$ctrl.deleteUser($event, friend)">❌</a>
-  <strong>Name: {{ friend.name }}</strong>
-  Phone Number: {{ friend.phone_number }}
-  Email: {{ friend.email }}
-  Birthday: {{ friend.birthday }}
-  Anniversary: {{ friend.anniversary }}
-  Email Frequency: {{ friend.email_duration }}
-  Phone Call Frequency: {{ friend.phone_duration }}
-  Text Frequency:  {{ friend.text_duration }}
 </div>
