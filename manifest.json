@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
 
-  "name": "FriendKeeper Notification Demo",
+  "name": "FriendKeeper",
   "description": "FriendKeeper desktop notifications",
   "version": "1.0",
 
@@ -18,7 +18,6 @@
     "notifications",
     "http://localhost/*"
   ],
-  "options_page": "options.html",
   "background": {
      "scripts": ["background.js"]
   },

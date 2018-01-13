@@ -7,9 +7,10 @@ exports.up = function(knex, Promise) {
     table.string('email');
     table.date('birthday');
     table.date('anniversary');
-    table.integer('email_duration');
-    table.integer('phone_duration');
-    table.integer('text_duration');
+    table.integer('date_added');
+    table.integer('email_interval');
+    table.integer('phone_interval');
+    table.integer('text_interval');
   })
 };
 
