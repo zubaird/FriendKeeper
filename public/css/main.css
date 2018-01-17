@@ -1,0 +1,48 @@
+
+.container {
+    width: 50%;
+    margin: auto;
+}
+h1, h3, h4, h5, h6, a, p, li {
+    font-family: 'Alegreya Sans', sans-serif;
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 400;
+}
+
+.listContainer {
+    background: #fff;
+    width: 100%;
+    padding: 1%;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+}
+
+a {
+  color: rgba(0, 0, 0, 0.5) !important;
+}
+a:hover {
+  color: black !important;
+}
+
+.ui.primary.button, .ui.red.button {
+    display: flex;
+    margin: auto;
+}
+
+
+input.ng-invalid.ng-not-empty.ng-dirty.ng-valid-parse.ng-valid-required.ng-invalid-minlength.ng-touched {
+    background-color: #FE938C;
+    border: 1px solid red;
+}
+.error {
+    color: red;
+}
+input.ng-not-empty.ng-dirty.ng-valid-parse.ng-valid-required.ng-touched.ng-valid.ng-valid-minlength {
+    background-color: #C7EFCF;
+    border: 1px solid green;
+}
+
+input.ng-valid.ng-valid-required.ng-dirty.ng-empty.ng-touched {
+    margin-top: 1rem;
+}

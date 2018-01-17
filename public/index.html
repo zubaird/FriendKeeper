@@ -6,9 +6,16 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   </head>
   <body>
-    <h1>FriendKeeper</h1>
     <app></app>
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
     <script>
     angular.module('app', [])
     .component('app', {
@@ -31,6 +38,22 @@
         }
 
         vm.addFriend = function addFriend(){
+          var data = {
+                name: vm.friend.name,
+                phone_number: vm.friend.phone_number,
+                email: vm.friend.email,
+                birthday: vm.friend.birthday,
+                anniversary: vm.friend.anniversary,
+                date_added: Math.floor(Date.now()/100000),
+                email_interval: vm.friend.email_interval,
+                phone_interval: vm.friend.phone_interval,
+                text_interval: vm.friend.text_interval
+            };
+
+          $http.post('/friends', data).then(function(data, status){
+            vm.PostDataResponse = data.body;
+            console.log(status);
+          })
 
           vm.friendsList.push(vm.friend.name)
           console.log(vm.friendsList);
@@ -38,8 +61,18 @@
 
         }
 
-        vm.deleteUser = function (e, friend) {
+        vm.editFriend = function(friend) {
+          $http.patch('/friends/'+friend.id).then(function(data){
+            console.log(data.body);
+          })
+        }
+
+        vm.deleteFriend = function (e, friend) {
           e.preventDefault()
+          $http.delete('/friends/'+ friend.id).then(function(data, status){
+            vm.DeleteDataResponse = data.body;
+            console.log(status);
+          })
           vm.serverResponse.splice(vm.serverResponse.indexOf(friend), 1)
           console.log(vm.serverResponse);
         }
