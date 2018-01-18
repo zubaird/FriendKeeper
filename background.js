@@ -1,4 +1,4 @@
-
+// 
 // function show() {
 //   let time = /(..)(:..)/.exec(new Date());     // The prettyprinted time.
 //   let hour = time[1] % 12 || 12;               // The prettyprinted hour.
@@ -18,6 +18,3 @@
 //     text_interval *= 2;
 //   }
 // }
-
-new Notification("Hello World!")
-console.log(new Notification("Hello World!"))

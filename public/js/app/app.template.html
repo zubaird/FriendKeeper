@@ -16,11 +16,11 @@
       <input type="text" ng-model="$ctrl.friend.phone_interval" placeholder="phone call frequency (days)" />
       <input type="text" ng-model="$ctrl.friend.text_interval" placeholder="text frequency (days)" />
       <input class="ui primary button" type="submit">
-      <button ng-click="isFormOpen = false" class="ui red button">Cancel</button>
+      <button ng-click="isFormOpen = false" class="ui primary button">Cancel</button>
     </form>
   </div>
 
-  <div class="listContainer" ng-repeat="friend in $ctrl.serverResponse">
+  <div class="listContainer" ng-repeat="friend in $ctrl.friends">
     <strong><a href="#">{{ friend.name }}</a></strong>
     <a href="#" ng-click="$ctrl.editFriend()"><i class="edit icon"></i></a>
     <a href="#" ng-click="$ctrl.deleteFriend($event, friend)"><i class="remove user icon"></i></a>

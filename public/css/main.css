@@ -3,6 +3,11 @@
     width: 80%;
     margin: auto;
 }
+
+.ui.secondary.pointing.menu {
+  background-color: lightgray;
+}
+
 h1, h3, h4, h5, h6, a, p, li {
     font-family: 'Alegreya Sans', sans-serif;
     color: rgba(0, 0, 0, 0.5);
@@ -25,9 +30,19 @@ a:hover {
   color: black !important;
 }
 
-.ui.primary.button, .ui.red.button {
-    display: flex;
-    margin: auto;
+.ui.primary.button {
+  background-color: black !important;
+  color: white !important;
+  display: inline;
+  margin: auto;
+  margin-top: 5px !important;
+  padding: 8px !important;
+}
+
+.ui.primary.button:hover {
+  background-color: lightgray !important;
+  color: black !important;
+  border: 1px solid black;
 }
 
 

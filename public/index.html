@@ -10,11 +10,11 @@
     <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0/angular.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.js" charset="utf-8"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
     <script>
     angular.module('app', [])
@@ -26,15 +26,59 @@
       appController.$inject = ['$http']
       function appController($http){
         const vm = this
+        let myInterval = null;
 
-        vm.$onInit = function(){
+        const beginNotifying = () => {
+          if(myInterval){
+            clearInterval(myInterval);
+            myInterval = null;
+          }
+
           $http.get('/friends').then(function(res){
-            vm.serverResponse = res.data
-            vm.friendsList = res.data.map(el=>{
+
+            vm.friends = res.data
+            vm.friendsList = vm.friends.map(el=>{
               return el.name
             })
+            let notifications = vm.friends.map(friend=>{
+              return createNotifyObject(friend.name, friend.birthday, friend.email_interval, friend.phone_interval, friend.text_interval)
+            })
+
+
+            function createNotifyObject(name, birthday, email_interval, phone_interval, text_interval) {
+             return   {
+                 timestamp: Date.now() + (email_interval*1000),
+                 note: function() {
+                   return new Notification(name,{
+                     requireInteraction: false,
+                     body: `Hey, it's time to send ${name} an email!`,
+                     title: name
+                   })
+                 },
+                 notFired: true
+               }
+            }
+
+            myInterval = setInterval(function(){
+              notifications.forEach( el => {
+                if ( Date.now() >= el.timestamp && el.notFired) {
+                  console.log(  el.note() );
+                  el.notFired = false;
+                }
+              })
+
+            },100)
+
           })
+          .catch( err => console.log(err))
         }
+
+        vm.$onInit = function(){
+          beginNotifying()
+        }
+
+
+
 
         vm.addFriend = function addFriend(){
           var data = {
@@ -53,33 +97,8 @@
             vm.PostDataResponse = data.body;
           })
           vm.friendsList.push(vm.friend.name)
-          vm.$onInit();
+          beginNotifying();
           delete vm.friend
-
-          if(data.email_interval !== null){
-            new Notification(data.name + " Email Reminder", {
-              icon: "../icon.jpg",
-              requireInteraction: true,
-              title: data.name + " Email Reminder",
-              body: `Hey, it's time to send ${data.name} an email!`
-            })
-          }
-          if(data.phone_interval !== null){
-            new Notification(data.name + " Phone Reminder", {
-              icon: "../icon.jpg",
-              requireInteraction: true,
-              title: data.name + " Phone Reminder",
-              body: `Hey, it's time to give ${data.name} a call!`
-            })
-          }
-          if(data.text_interval !== null){
-            new Notification(data.name + " Text Reminder", {
-              icon: "../icon.jpg",
-              requireInteraction: true,
-              title: data.name + " Text Reminder",
-              body: `Hey, it's time to send ${data.name} a text!`
-            })
-          }
         }
 
         vm.editFriend = function(friend) {
@@ -93,7 +112,7 @@
           $http.delete('/friends/'+ friend.id).then(function(data, status){
             vm.DeleteDataResponse = data.body;
           })
-          vm.serverResponse.splice(vm.serverResponse.indexOf(friend), 1)
+          vm.friends.splice(vm.friends.indexOf(friend), 1)
         }
       }
     </script>
