@@ -17,9 +17,10 @@
   },
   "homepage": "https://github.com/DTThor/FriendKeeper#readme",
   "dependencies": {
-    "angular": "^1.6.8",
-    "angular-moment": "^1.2.0",
     "@uirouter/angularjs": "^1.0.3",
+    "angular": "^1.6.8",
+    "angular-desktop-notification": "^1.1.6",
+    "angular-moment": "^1.2.0",
     "body-parser": "^1.18.2",
     "bootstrap": "^3.3.7",
     "chai": "^4.1.2",
@@ -30,6 +31,7 @@
     "mocha": "^4.1.0",
     "moment": "^2.20.1",
     "morgan": "^1.9.0",
-    "pg": "^7.4.1"
+    "pg": "^7.4.1",
+    "push.js": "^1.0.5"
   }
 }

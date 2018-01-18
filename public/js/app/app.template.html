@@ -1,28 +1,27 @@
 <ng-include src="'../partials/navbar.html'"></ng-include>
 <div class="container">
-  <h3 class="listContainer">Friend List</h3>
-  <button ng-click="isFormOpen = !isFormOpen" class="ui primary button">Add</button>
+  <div class="listContainer">
+    <h3>Friend List</h3>
+    <button ng-click="isFormOpen = !isFormOpen" class="ui primary button">Add</button>
+  </div>
 
-  <div>{{ $ctrl.PostDataResponse }}</div>
-
-  <div>{{ $ctrl.DeleteDataResponse }}</div>
   <div ng-show="isFormOpen">
-    <form class="ui form" ng-submit="$ctrl.addFriend()">
-      <input type="text" ng-model="$ctrl.friend.name" placeholder="name" />
+    <form class="ui form listContainer" ng-submit="$ctrl.addFriend()">
+      <input type="text" ng-required ng-touched ng-model="$ctrl.friend.name" placeholder="name" />
       <input type="text" ng-model="$ctrl.friend.phone_number" placeholder="phone number" />
       <input type="text" ng-model="$ctrl.friend.email" placeholder="email" />
-      <input type="text" ng-model="$ctrl.friend.birthday" placeholder="birthday" />
-      <input type="text" ng-model="$ctrl.friend.anniversary" placeholder="anniversary" />
-      <input type="text" ng-model="$ctrl.friend.email_interval" placeholder="email frequency" />
-      <input type="text" ng-model="$ctrl.friend.phone_interval" placeholder="phone call frequency" />
-      <input type="text" ng-model="$ctrl.friend.text_interval" placeholder="text frequency" />
+      <input type="text" ng-model="$ctrl.friend.birthday" placeholder="birthday (mm/dd/yyyy)" />
+      <input type="text" ng-model="$ctrl.friend.anniversary" placeholder="anniversary (mm/dd/yyyy)" />
+      <input type="text" ng-model="$ctrl.friend.email_interval" placeholder="email frequency (days)" />
+      <input type="text" ng-model="$ctrl.friend.phone_interval" placeholder="phone call frequency (days)" />
+      <input type="text" ng-model="$ctrl.friend.text_interval" placeholder="text frequency (days)" />
       <input class="ui primary button" type="submit">
       <button ng-click="isFormOpen = false" class="ui red button">Cancel</button>
     </form>
   </div>
 
   <div class="listContainer" ng-repeat="friend in $ctrl.serverResponse">
-    <strong><a href=`/friends/${friend.id}`>{{ friend.name }}</a></strong>
+    <strong><a href="#">{{ friend.name }}</a></strong>
     <a href="#" ng-click="$ctrl.editFriend()"><i class="edit icon"></i></a>
     <a href="#" ng-click="$ctrl.deleteFriend($event, friend)"><i class="remove user icon"></i></a>
   </div>

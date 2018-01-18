@@ -1,6 +1,6 @@
 
 .container {
-    width: 50%;
+    width: 80%;
     margin: auto;
 }
 h1, h3, h4, h5, h6, a, p, li {
@@ -11,7 +11,7 @@ h1, h3, h4, h5, h6, a, p, li {
 
 .listContainer {
     background: #fff;
-    width: 100%;
+    width: 40%;
     padding: 1%;
     text-align: center;
     color: rgba(0, 0, 0, 0.5);

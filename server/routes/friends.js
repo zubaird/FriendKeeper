@@ -19,7 +19,9 @@ router.post('/', (req, res, next) => {
   knex('friends')
     .insert(req.body)
     .returning('*')
-    .then(friends => res.json(friends))
+    .then(friends => {
+      res.json(friends)
+    })
     .catch(err => next(err))
 })
 

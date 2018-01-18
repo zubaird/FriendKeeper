@@ -13,6 +13,7 @@
     }
   },
   "permissions": [
+    "identity",
     "activeTab",
     "storage",
     "notifications",

@@ -30,7 +30,6 @@
         vm.$onInit = function(){
           $http.get('/friends').then(function(res){
             vm.serverResponse = res.data
-            console.log(vm.serverResponse);
             vm.friendsList = res.data.map(el=>{
               return el.name
             })
@@ -52,13 +51,35 @@
 
           $http.post('/friends', data).then(function(data, status){
             vm.PostDataResponse = data.body;
-            console.log(status);
           })
-
           vm.friendsList.push(vm.friend.name)
-          console.log(vm.friendsList);
+          vm.$onInit();
           delete vm.friend
 
+          if(data.email_interval !== null){
+            new Notification(data.name + " Email Reminder", {
+              icon: "../icon.jpg",
+              requireInteraction: true,
+              title: data.name + " Email Reminder",
+              body: `Hey, it's time to send ${data.name} an email!`
+            })
+          }
+          if(data.phone_interval !== null){
+            new Notification(data.name + " Phone Reminder", {
+              icon: "../icon.jpg",
+              requireInteraction: true,
+              title: data.name + " Phone Reminder",
+              body: `Hey, it's time to give ${data.name} a call!`
+            })
+          }
+          if(data.text_interval !== null){
+            new Notification(data.name + " Text Reminder", {
+              icon: "../icon.jpg",
+              requireInteraction: true,
+              title: data.name + " Text Reminder",
+              body: `Hey, it's time to send ${data.name} a text!`
+            })
+          }
         }
 
         vm.editFriend = function(friend) {
@@ -71,10 +92,8 @@
           e.preventDefault()
           $http.delete('/friends/'+ friend.id).then(function(data, status){
             vm.DeleteDataResponse = data.body;
-            console.log(status);
           })
           vm.serverResponse.splice(vm.serverResponse.indexOf(friend), 1)
-          console.log(vm.serverResponse);
         }
       }
     </script>
