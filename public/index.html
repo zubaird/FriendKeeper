@@ -41,29 +41,81 @@
               return el.name
             })
             let notifications = vm.friends.map(friend=>{
-              return createNotifyObject(friend.name, friend.birthday, friend.email_interval, friend.phone_interval, friend.text_interval)
+              return createNotifyObject(friend.name, friend.birthday, friend.anniversary, friend.email_interval, friend.phone_interval, friend.text_interval)
             })
 
 
-            function createNotifyObject(name, birthday, email_interval, phone_interval, text_interval) {
+            function createNotifyObject(name, birthday, anniversary, email_interval, phone_interval, text_interval) {
              return   {
-                 timestamp: Date.now() + (email_interval*1000),
-                 note: function() {
-                   return new Notification(name,{
+                 emailtimestamp: Date.now() + 86400000 + (email_interval*1000),
+                 emailnote: function() {
+                   return new Notification(name + " Email Reminder",{
                      requireInteraction: false,
                      body: `Hey, it's time to send ${name} an email!`,
-                     title: name
+                     title: name + " Email Reminder"
                    })
                  },
-                 notFired: true
+                 emailnotFired: true,
+                 phonetimestamp: Date.now() + 86400000 + (phone_interval*1000),
+                 phonenote: function() {
+                   return new Notification(name + " Phone Reminder",{
+                     requireInteraction:false,
+                     body: `Hey, it's time to give ${name} a call!`,
+                     title: name + " Phone Reminder"
+                   })
+                 },
+                 phonenotFired: true,
+                 texttimestamp: Date.now() + 86400000 +  (text_interval*1000),
+                 textnote: function() {
+                   return new Notification(name + " Text Reminder",{
+                     requireInteraction:false,
+                     body: `Hey, it's time to text ${name}!`,
+                     title: name + " Text Reminder"
+                   })
+                 },
+                 textnotFired: true,
+                 birthdaytimestamp: Date.now() + 86400000 + (birthday*1000),
+                 birthdaynote: function() {
+                   return new Notification(name + " Birthday Reminder",{
+                     requireInteraction:false,
+                     body: `Hey, it's ${name}'s birthday!`,
+                     title: name + " Birthday Reminder"
+                   })
+                 },
+                 birthdaynotFired: true,
+                 anniversarytimestamp: Date.now() + 86400000   + (anniversary*1000),
+                 anniversarynote: function() {
+                   return new Notification(name + " Anniversary Reminder",{
+                     requireInteraction:false,
+                     body: `Hey, it's ${name}'s anniversary!`,
+                     title: name + " Anniversary Reminder"
+                   })
+                 },
+                 anniversarynotFired: true,
                }
             }
 
             myInterval = setInterval(function(){
               notifications.forEach( el => {
-                if ( Date.now() >= el.timestamp && el.notFired) {
-                  console.log(  el.note() );
-                  el.notFired = false;
+                if ( Date.now() >= el.emailtimestamp && el.emailnotFired) {
+                  console.log(  el.emailnote() );
+                  el.emailnotFired = false;
+                }
+                if (Date.now() >= el.phonetimestamp && el.phonenotFired){
+                  console.log( el.phonenote() );
+                  el.phonenotFired = false;
+                }
+                if (Date.now() >= el.texttimestamp && el.textnotFired){
+                  console.log( el.textnote() );
+                  el.textnotFired = false;
+                }
+                if (Date.now() >= el.birthdaytimestamp && el.birthdaynotFired){
+                  console.log( el.birthdaynote() );
+                  el.birthdaynotFired = false;
+                }
+                if (Date.now() >= el.anniversarytimestamp && el.anniversarynotFired){
+                  console.log( el.anniversarynote() );
+                  el.anniversarynotFired = false;
                 }
               })
 
@@ -103,7 +155,7 @@
 
         vm.editFriend = function(friend) {
           $http.patch('/friends/'+friend.id).then(function(data){
-            console.log(data.body);
+            console.log(data);
           })
         }
 

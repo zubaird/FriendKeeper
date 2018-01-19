@@ -1,29 +1,79 @@
 <ng-include src="'../partials/navbar.html'"></ng-include>
 <div class="container">
   <div class="listContainer">
-    <h3>Friend List</h3>
-    <button ng-click="isFormOpen = !isFormOpen" class="ui primary button">Add</button>
+
+      <h2>Friend List</h2>
+      <button ng-click="$ctrl.isAddFormOpen = !$ctrl.isAddFormOpen; $ctrl.isEditFormOpen = false;" class="ui primary button">Add</button>
+
+
+    <div ng-show="$ctrl.isAddFormOpen">
+      <form class="ui form listContainer" ng-submit="$ctrl.addFriend(); $ctrl.isAddFormOpen = false">
+        <input type="text" ng-required ng-touched ng-model="$ctrl.friend.name" placeholder="name" />
+        <input type="text" ng-model="$ctrl.friend.phone_number" placeholder="phone number" />
+        <input type="text" ng-model="$ctrl.friend.email" placeholder="email" />
+        <input type="text" ng-model="$ctrl.friend.birthday" placeholder="birthday (mm/dd/yyyy)" />
+        <input type="text" ng-model="$ctrl.friend.anniversary" placeholder="anniversary (mm/dd/yyyy)" />
+        <input type="text" ng-model="$ctrl.friend.email_interval" placeholder="email frequency (days)" />
+        <input type="text" ng-model="$ctrl.friend.phone_interval" placeholder="phone call frequency (days)" />
+        <input type="text" ng-model="$ctrl.friend.text_interval" placeholder="text frequency (days)" />
+        <input class="ui primary button" type="submit">
+        <button ng-click="$ctrl.isAddFormOpen = false" class="ui primary button">Cancel</button>
+      </form>
+    </div>
+
+    <div id="friendList" ng-repeat="friend in $ctrl.friends">
+      <a href="#" ng-click="$ctrl.isEditFormOpen = !$ctrl.isEditFormOpen; $ctrl.currentFriend = friend; $ctrl.isAddFormOpen = false;">{{ friend.name }}</a>
+      <a href="#" ng-click="$ctrl.deleteFriend($event, friend); $ctrl.isEditFormOpen = false"><i class="remove user icon"></i></a>
+    </div>
   </div>
 
-  <div ng-show="isFormOpen">
-    <form class="ui form listContainer" ng-submit="$ctrl.addFriend()">
-      <input type="text" ng-required ng-touched ng-model="$ctrl.friend.name" placeholder="name" />
-      <input type="text" ng-model="$ctrl.friend.phone_number" placeholder="phone number" />
-      <input type="text" ng-model="$ctrl.friend.email" placeholder="email" />
-      <input type="text" ng-model="$ctrl.friend.birthday" placeholder="birthday (mm/dd/yyyy)" />
-      <input type="text" ng-model="$ctrl.friend.anniversary" placeholder="anniversary (mm/dd/yyyy)" />
-      <input type="text" ng-model="$ctrl.friend.email_interval" placeholder="email frequency (days)" />
-      <input type="text" ng-model="$ctrl.friend.phone_interval" placeholder="phone call frequency (days)" />
-      <input type="text" ng-model="$ctrl.friend.text_interval" placeholder="text frequency (days)" />
-      <input class="ui primary button" type="submit">
-      <button ng-click="isFormOpen = false" class="ui primary button">Cancel</button>
-    </form>
+  <div class="formContainer" ng-init="$ctrl.isEditFormOpen = false">
+    <div ng-show="$ctrl.isEditFormOpen">
+      <h2>Edit Friend: {{ $ctrl.currentFriend.name }}</h2>
+      <form class="ui form friendEditForm" ng-submit="$ctrl.editFriend()">
+        <div class="field">
+          <label>name:</label>
+          <input type="text" ng-model="$ctrl.currentFriend.name" value="$ctrl.currentFriend.name" />
+        </div>
+        <div class="field">
+          <label>phone number:</label>
+          <input type="text" ng-model="$ctrl.currentFriend.phone_number" value="$ctrl.currentFriend.phone_number" />
+        </div>
+
+        <div class="field">
+          <label>email:</label>
+          <input type="text" ng-model="$ctrl.currentFriend.email" value="$ctrl.currentFriend.email" />
+        </div>
+
+        <div class="field">
+          <label>birthday (mm/dd/yyyy):</label>
+          <input type="text" ng-model="$ctrl.currentFriend.birthday" value="$ctrl.currentFriend.birthday" />
+        </div>
+
+        <div class="field">
+          <label>anniversary (mm/dd/yyyy):</label>
+          <input type="text" ng-model="$ctrl.currentFriend.anniversary" value="$ctrl.currentFriend.anniversary" />
+        </div>
+
+        <div class="field">
+          <label>email frequency (days):</label>
+          <input type="text" ng-model="$ctrl.currentFriend.email_interval" value="$ctrl.currentFriend.email_interval" />
+        </div>
+
+        <div class="field">
+          <label>phone call frequency (days):</label>
+          <input type="text" ng-model="$ctrl.currentFriend.phone_interval" value="$ctrl.currentFriend.phone_interval" />
+        </div>
+
+        <div class="field">
+          <label>text frequency (days):</label>
+          <input type="text" ng-model="$ctrl.currentFriend.text_interval" value="$ctrl.currentFriend.text_interval" />
+        </div>
+          <input class="ui primary button" type="submit">
+          <button ng-click="$ctrl.isEditFormOpen = false" class="ui primary button">Cancel</button>
+      </form>
+    </div>
   </div>
 
-  <div class="listContainer" ng-repeat="friend in $ctrl.friends">
-    <strong><a href="#">{{ friend.name }}</a></strong>
-    <a href="#" ng-click="$ctrl.editFriend()"><i class="edit icon"></i></a>
-    <a href="#" ng-click="$ctrl.deleteFriend($event, friend)"><i class="remove user icon"></i></a>
-  </div>
 
 </div>

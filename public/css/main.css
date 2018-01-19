@@ -2,13 +2,16 @@
 .container {
     width: 80%;
     margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 }
 
 .ui.secondary.pointing.menu {
   background-color: lightgray;
 }
 
-h1, h3, h4, h5, h6, a, p, li {
+h1, h2, h3, h4, h5, h6, a, p, li {
     font-family: 'Alegreya Sans', sans-serif;
     color: rgba(0, 0, 0, 0.5);
     font-weight: 400;
@@ -16,11 +19,32 @@ h1, h3, h4, h5, h6, a, p, li {
 
 .listContainer {
     background: #fff;
-    width: 40%;
     padding: 1%;
+    margin-left: 0%;
     text-align: center;
     color: rgba(0, 0, 0, 0.5);
     text-decoration: none;
+    flex: 1 1 25%;
+}
+
+.formContainer {
+  flex: 1 1 25%;
+  padding: 1%;
+}
+
+.friendEditForm {
+  background: #fff;
+  color: rgba(0,0,0, 0.5);
+  text-decoration: none;
+  text-align: center;
+}
+#friendList {
+  padding: 10px;
+  font-size: 20px;
+}
+
+label {
+  text-align: left !important;
 }
 
 a {
