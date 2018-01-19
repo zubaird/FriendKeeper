@@ -30,7 +30,7 @@
   <div class="formContainer" ng-init="$ctrl.isEditFormOpen = false">
     <div ng-show="$ctrl.isEditFormOpen">
       <h2>Edit Friend: {{ $ctrl.currentFriend.name }}</h2>
-      <form class="ui form friendEditForm" ng-submit="$ctrl.editFriend()">
+      <form class="ui form friendEditForm" ng-submit="$ctrl.editFriend(); $ctrl.isEditFormOpen = false">
         <div class="field">
           <label>name:</label>
           <input type="text" ng-model="$ctrl.currentFriend.name" value="$ctrl.currentFriend.name" />

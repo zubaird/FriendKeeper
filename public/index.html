@@ -153,8 +153,19 @@
           delete vm.friend
         }
 
-        vm.editFriend = function(friend) {
-          $http.patch('/friends/'+friend.id).then(function(data){
+        vm.editFriend = function editFriend() {
+          var data = {
+                name: vm.currentFriend.name,
+                phone_number: vm.currentFriend.phone_number,
+                email: vm.currentFriend.email,
+                birthday: vm.currentFriend.birthday,
+                anniversary: vm.currentFriend.anniversary,
+                date_added: Math.floor(Date.now()/100000),
+                email_interval: vm.currentFriend.email_interval,
+                phone_interval: vm.currentFriend.phone_interval,
+                text_interval: vm.currentFriend.text_interval
+            };
+          $http.patch('/friends/'+ vm.currentFriend.id, data).then(function(data){
             console.log(data);
           })
         }
