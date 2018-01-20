@@ -1,10 +1,16 @@
 
 .container {
-    width: 80%;
+    width: 70%;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+}
+
+#all {
+  background-image: linear-gradient(rgba(29, 189, 163, 0.31), white);
+  background-size: 100% 100% !important;
+  background-repeat: no-repeat;
 }
 
 .ui.secondary.pointing.menu {
@@ -13,31 +19,37 @@
 
 h1, h2, h3, h4, h5, h6, a, p, li {
     font-family: 'Alegreya Sans', sans-serif;
-    color: rgba(0, 0, 0, 0.5);
     font-weight: 400;
 }
 
 .listContainer {
-    background: #fff;
+    border-radius: 5%;
+    background: rgba(0, 0, 0, 0.1) !important;
+    /* background: #fff !important; */
     padding: 1%;
     margin-left: 0%;
+    margin-top: 2%;
     text-align: center;
-    color: rgba(0, 0, 0, 0.5);
+    /* color: rgba(0, 0, 0, 0.5); */
     text-decoration: none;
     flex: 1 1 25%;
 }
 
 .formContainer {
   flex: 1 1 25%;
-  padding: 1%;
+  padding: 2%;
+  border-radius: 2%;
 }
 
 .friendEditForm {
-  background: #fff;
+  background: rgba(0, 0, 0, 0.1) !important;
   color: rgba(0,0,0, 0.5);
   text-decoration: none;
   text-align: center;
+  border-radius: 2%;
+
 }
+
 #friendList {
   padding: 10px;
   font-size: 20px;
@@ -45,13 +57,14 @@ h1, h2, h3, h4, h5, h6, a, p, li {
 
 label {
   text-align: left !important;
+  padding: 1%;
 }
 
 a {
-  color: rgba(0, 0, 0, 0.5) !important;
+  color: black !important;
 }
 a:hover {
-  color: black !important;
+  color: white !important;
 }
 
 .ui.primary.button {
@@ -70,18 +83,9 @@ a:hover {
 }
 
 
-input.ng-invalid.ng-not-empty.ng-dirty.ng-valid-parse.ng-valid-required.ng-invalid-minlength.ng-touched {
-    background-color: #FE938C;
-    border: 1px solid red;
+input.ng-touched.ng-invalid.ng-empty {
+    border: 1px solid red !important;
 }
 .error {
-    color: red;
-}
-input.ng-not-empty.ng-dirty.ng-valid-parse.ng-valid-required.ng-touched.ng-valid.ng-valid-minlength {
-    background-color: #C7EFCF;
-    border: 1px solid green;
-}
-
-input.ng-valid.ng-valid-required.ng-dirty.ng-empty.ng-touched {
-    margin-top: 1rem;
+    color: red !important;
 }
