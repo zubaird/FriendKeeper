@@ -7,17 +7,28 @@
     flex-direction: row;
 }
 
+body {
+  height: 100%;
+}
+
 #all {
   background-image: linear-gradient(rgba(29, 189, 163, 0.31), white);
-  background-size: 100% 100% !important;
-  background-repeat: no-repeat;
 }
 
 .ui.secondary.pointing.menu {
   background-color: lightgray;
 }
 
-h1, h2, h3, h4, h5, h6, a, p, li {
+.ui.secondary.pointing.menu:hover {
+  color: rgba(29, 189, 163, 0.31) !important;
+
+}
+
+.ui.secondary.pointing.menu a:hover {
+  color: rgb(29, 189, 163) !important;
+}
+
+h1, h2, h3, h4, h5, h6, a, p, footer {
     font-family: 'Alegreya Sans', sans-serif;
     font-weight: 400;
 }
@@ -25,12 +36,11 @@ h1, h2, h3, h4, h5, h6, a, p, li {
 .listContainer {
     border-radius: 5%;
     background: rgba(0, 0, 0, 0.1) !important;
-    /* background: #fff !important; */
     padding: 1%;
     margin-left: 0%;
     margin-top: 2%;
+    margin-bottom: 110px;
     text-align: center;
-    /* color: rgba(0, 0, 0, 0.5); */
     text-decoration: none;
     flex: 1 1 25%;
 }
@@ -47,7 +57,7 @@ h1, h2, h3, h4, h5, h6, a, p, li {
   text-decoration: none;
   text-align: center;
   border-radius: 2%;
-
+  margin-top: 1%;
 }
 
 #friendList {
@@ -64,7 +74,7 @@ a {
   color: black !important;
 }
 a:hover {
-  color: white !important;
+  color: rgba(0, 0, 0, 0.4) !important;
 }
 
 .ui.primary.button {
@@ -88,4 +98,15 @@ input.ng-touched.ng-invalid.ng-empty {
 }
 .error {
     color: red !important;
+}
+
+.footer {
+  flex-shrink: 0;
+  padding: 25px;
+  background-color: lightgray;
+  text-align: center;
+}
+
+.footer a {
+  padding: 10px;
 }

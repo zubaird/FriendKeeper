@@ -4,7 +4,7 @@
     <div class="listContainer">
 
         <h2>Friend List</h2>
-        <button ng-click="$ctrl.isAddFormOpen = !$ctrl.isAddFormOpen; $ctrl.isEditFormOpen = false;" class="ui primary button">Add</button>
+        <button ng-click="$ctrl.isAddFormOpen = !$ctrl.isAddFormOpen; $ctrl.isEditFormOpen = false;" class="ui primary button">Add a Friend</button>
 
 
       <div ng-show="$ctrl.isAddFormOpen">
@@ -75,11 +75,10 @@
             <label>text frequency (days):</label>
             <input type="text" ng-model="$ctrl.currentFriend.text_interval" value="$ctrl.currentFriend.text_interval" required />
           </div>
-            <input class="ui primary button" type="submit">
+            <button class="ui primary button" type="submit">Save Changes</button>
             <button ng-click="$ctrl.isEditFormOpen = false" class="ui primary button">Cancel</button>
         </form>
       </div>
     </div>
   </div>
-
 </div>
