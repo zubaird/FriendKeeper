@@ -47,7 +47,7 @@
 
             function createNotifyObject(name, birthday, anniversary, email_interval, phone_interval, text_interval) {
              return   {
-                 emailtimestamp: Date.now() + 86400000 + (email_interval*1000),
+                 emailtimestamp: Date.now() + (email_interval*1000),
                  emailnote: function() {
                    return new Notification(name + " Email Reminder",{
                      requireInteraction: false,
@@ -56,7 +56,7 @@
                    })
                  },
                  emailnotFired: true,
-                 phonetimestamp: Date.now() + 86400000 + (phone_interval*1000),
+                 phonetimestamp: Date.now() + (phone_interval*1000),
                  phonenote: function() {
                    return new Notification(name + " Phone Reminder",{
                      requireInteraction:false,
@@ -65,7 +65,7 @@
                    })
                  },
                  phonenotFired: true,
-                 texttimestamp: Date.now() + 86400000 +  (text_interval*1000),
+                 texttimestamp: Date.now() + (text_interval*1000),
                  textnote: function() {
                    return new Notification(name + " Text Reminder",{
                      requireInteraction:false,
@@ -74,7 +74,7 @@
                    })
                  },
                  textnotFired: true,
-                 birthdaytimestamp: Date.now() + 86400000 + (birthday*1000),
+                 birthdaytimestamp: Date.now() + (birthday*1000),
                  birthdaynote: function() {
                    return new Notification(name + " Birthday Reminder",{
                      requireInteraction:false,
@@ -83,7 +83,7 @@
                    })
                  },
                  birthdaynotFired: true,
-                 anniversarytimestamp: Date.now() + 86400000   + (anniversary*1000),
+                 anniversarytimestamp: Date.now() + (anniversary*1000),
                  anniversarynote: function() {
                    return new Notification(name + " Anniversary Reminder",{
                      requireInteraction:false,
@@ -98,28 +98,28 @@
             myInterval = setInterval(function(){
               notifications.forEach( el => {
                 if ( Date.now() >= el.emailtimestamp && el.emailnotFired) {
-                  console.log(  el.emailnote() );
+                  // el.emailnote();
                   el.emailnotFired = false;
                 }
                 if (Date.now() >= el.phonetimestamp && el.phonenotFired){
-                  console.log( el.phonenote() );
+                  // el.phonenote();
                   el.phonenotFired = false;
                 }
                 if (Date.now() >= el.texttimestamp && el.textnotFired){
-                  console.log( el.textnote() );
+                  // el.textnote();
                   el.textnotFired = false;
                 }
                 if (Date.now() >= el.birthdaytimestamp && el.birthdaynotFired){
-                  console.log( el.birthdaynote() );
+                  // el.birthdaynote();
                   el.birthdaynotFired = false;
                 }
                 if (Date.now() >= el.anniversarytimestamp && el.anniversarynotFired){
-                  console.log( el.anniversarynote() );
+                  // el.anniversarynote();
                   el.anniversarynotFired = false;
                 }
               })
 
-            },100)
+            },120000)
 
           })
           .catch( err => console.log(err))
