@@ -23,8 +23,12 @@ const friends = require( './routes/friends' );
 app.use('/friends',friends);
 
 
-app.listen( PORT, ()=> {
-    console.log('listening on port:' + PORT);
+// app.listen( PORT, ()=> {
+//     console.log('listening on port:' + PORT);
+// });
+
+app.listen(PORT, "0.0.0.0", function() {
+console.log("Listening on Port 3000");
 });
 
 module.exports = app;
