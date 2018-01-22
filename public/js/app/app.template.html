@@ -33,7 +33,11 @@
       </div>
     </div>
 
+
     <div class="formContainer" ng-init="$ctrl.isEditFormOpen = false">
+      <div ng-show="!$ctrl.isEditFormOpen">
+        <img id="friendPic" src="background.jpg">
+      </div>
       <div ng-show="$ctrl.isEditFormOpen">
         <form name="editForm" class="ui form friendEditForm" ng-submit="$ctrl.editFriend(); $ctrl.isEditFormOpen = false">
           <h2 class="ui dividing header">Edit Friend: {{ $ctrl.currentFriend.name }}</h2>

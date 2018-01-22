@@ -60,6 +60,12 @@ h1, h2, h3, h4, h5, h6, a, p, footer {
   margin-top: 1%;
 }
 
+#friendPic {
+  height: 326px;
+  width: 490px;
+  margin-top: 20%;
+}
+
 #friendList {
   padding: 10px;
   font-size: 20px;

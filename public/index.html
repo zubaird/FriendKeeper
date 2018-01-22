@@ -98,23 +98,23 @@
             myInterval = setInterval(function(){
               notifications.forEach( el => {
                 if ( Date.now() >= el.emailtimestamp && el.emailnotFired) {
-                  el.emailnote();
+                  // el.emailnote();
                   el.emailnotFired = false;
                 }
                 if (Date.now() >= el.phonetimestamp && el.phonenotFired){
-                  el.phonenote();
+                  // el.phonenote();
                   el.phonenotFired = false;
                 }
                 if (Date.now() >= el.texttimestamp && el.textnotFired){
-                  el.textnote();
+                  // el.textnote();
                   el.textnotFired = false;
                 }
                 if (Date.now() >= el.birthdaytimestamp && el.birthdaynotFired){
-                  el.birthdaynote();
+                  // el.birthdaynote();
                   el.birthdaynotFired = false;
                 }
                 if (Date.now() >= el.anniversarytimestamp && el.anniversarynotFired){
-                  el.anniversarynote();
+                  // el.anniversarynote();
                   el.anniversarynotFired = false;
                 }
               })
