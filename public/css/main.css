@@ -64,7 +64,8 @@ h1, h2, h3, h4, h5, h6, a, p, footer {
   height: 368px;
   width: 550px;
   flex: 1 1 25%;
-  margin-top: 10%;
+  margin-top: 11%;
+  border-radius: 15%;
 }
 
 #friendList {
