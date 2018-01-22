@@ -47,7 +47,7 @@
 
             function createNotifyObject(name, birthday, anniversary, email_interval, phone_interval, text_interval) {
              return   {
-                 emailtimestamp: Date.now() + (email_interval*1000),
+                 emailtimestamp: Date.now() + (email_interval*100),
                  emailnote: function() {
                    return new Notification(name + " Email Reminder",{
                      requireInteraction: false,
