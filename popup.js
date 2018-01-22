@@ -4,5 +4,5 @@ document.addEventListener('DOMContentLoaded', function() {
 })
 
 function goToLanding() {
- chrome.tabs.create({active: true, url: "friendkeeper.herokuapp.com"});
+ chrome.tabs.create({active: true, url: "http://friendkeeper.herokuapp.com"});
 }
