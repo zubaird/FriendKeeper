@@ -4,14 +4,14 @@ const knex = require('../db/knex');
 
 router.get('/', (req, res, next) => {
   knex('friends').returning('*')
-  .then(friends => res.send(friends))
+  .then(friends => res.json(friends))
 })
 
 router.get('/:id', (req, res, next) => {
   knex('friends')
     .where({id: req.params.id})
     .first()
-    .then(friend => res.send(friend))
+    .then(friend => res.json(friend))
     .catch(err => next(err))
 })
 
@@ -20,7 +20,7 @@ router.post('/', (req, res, next) => {
     .insert(req.body)
     .returning('*')
     .then(friends => {
-      res.send(friends)
+      res.json(friends)
     })
     .catch(err => next(err))
 })
@@ -30,7 +30,7 @@ router.patch('/:id', (req, res, next) => {
     .update(req.body)
     .where({id: req.params.id})
     .returning('*')
-    .then(friends => res.send(friends))
+    .then(friends => res.json(friends))
     .catch(err => next(err))
 })
 
