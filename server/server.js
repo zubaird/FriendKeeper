@@ -3,7 +3,6 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-require('dotenv').config();
 const bodyParser = require('body-parser');
 const PORT = process.env.NODE_ENV || 8080;
 
