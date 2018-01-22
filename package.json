@@ -4,7 +4,8 @@
   "description": "A Chrome Extension that helps users track and maintain their friendships",
   "main": "server.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "start": "node server/server.js"
   },
   "repository": {
     "type": "git",
